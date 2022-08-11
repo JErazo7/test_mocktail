@@ -9,11 +9,12 @@ import 'rewards_membership_summary_query.ast.gql.dart'
 
 class SomeCubit extends Cubit<int> {
   final GraphQLClient client;
+  late final ObservableQuery _rewardsMembershipQuery;
 
   SomeCubit(this.client) : super(0);
 
   void doSomething() {
-    ObservableQuery _rewardsMembershipQuery = client.watchQuery(
+    _rewardsMembershipQuery = client.watchQuery(
       WatchQueryOptions(
         operationName: 'RewardsMembershipSummary',
         document: rewards_membership_summary_query.document,
